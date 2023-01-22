@@ -1,0 +1,422 @@
+Jupyter Notebook
+Rotated List, Linear Search Solution - DSA
+Current Kernel Logo
+Python 3 (ipykernel) 
+
+Markdown
+PROBLEM: Rotated list
+Given a rotated list of a sorted unique list rotated unknown number of times, we need to write a function which will be used to determine the number of times the original sorted list was rotated to give the rotated list.
+
+Solution
+1.State the problem clearly. identify the input and output format.
+
+PROBLEM:Given a rotated list of a sorted unique list rotated unknown number of times,
+ we need to write a function which will be used to determine the number of times the original sorted list was rotated to give the rotated list.
+
+e.g rotated_list = [3, 4, 5, 1, 2] sorted_list = [1, 2, 3, 4, 5]
+
+Obviously, this list has been rotated 3 times.
+
+To rotate a list simply means to place the item in the last position of a list in the first position.
+
+INPUT: nums: a sorted rotated list e.g [7,9,2,3,5]
+
+OUTPUT: rotations: the number of times the original sorted list was royated e.g [2,3,5,7,9] is rotated 2 times.
+
+#Signature of function
+#We can now create the signature 
+#of our function.
+​
+def count_rotations_linear(nums):
+    position = 0
+    while position != len(nums):
+        if position > 0 and nums[position] < nums[position-1]:
+            return position
+        
+        position += 1
+    return 0
+        
+    
+    
+   
+#test format
+test_format = {'input':
+         {'nums': [5,7,8,10,11,
+                   12,14,15,17,
+                   19]},
+         'output': 3 }
+Test:
+
+ 
+test = {'input':
+         {'nums': [15,17,
+                   19,5,7,8,10,11,
+                   12,14]},
+         'output': 3 }
+​
+#testing our function by 
+#passing in case directly.
+nums0 = test['input']['nums']
+output0 = test['output']
+result0 = count_rotations_linear(nums0)
+​
+result0, result0 == output0
+(3, True)
+Create proper test cases for the scenarios listed above
+1.A sorted list containing 10 elements and rotated 3 times.
+
+test0 = test
+2.A sorted list containing 8 elements and rotated 5 times
+
+# A list containing 8 elements 
+#rotated 5 times.
+​
+​
+#test
+test1 = {'input': {'nums': 
+                   [4,5,6,7,
+                       8,1,2,3]
+             },
+             'output': 5}
+​
+#testing our function by 
+#passing in case directly.
+nums1 = test1['input']['nums']
+output1 = test1['output']
+​
+result1 = count_rotations_linear(nums1)
+​
+result1, result1 == output1
+(5, True)
+3.A sorted list containing n elements and rotated n times (would it give the original list?).
+
+#A sorted list containing n 
+#elements and rotated n times 
+#(would it give the original 
+#list?).
+​
+​
+​
+#test
+nums_test2_var = [2,4,6,8]
+test2 = {'input':{'nums': 
+                  [2,4,6,8]}, 
+         'output': 0}
+         
+​
+#testing our function by 
+#passing in case directly.
+nums2 = test2['input']['nums']
+output2 = test2['output']
+​
+result2 = count_rotations_linear(nums2)
+​
+result2, result2 == output2
+​
+​
+(0, True)
+4.A sorted list containing 1 element.
+
+#A sorted list containing 1 
+#element
+​
+​
+​
+#test
+test3 = {'input':{'nums': [3]},
+            'output': 0}
+​
+#testing our function by 
+#passing in case directly.
+nums3 = test3['input']['nums']
+output3 = test3['output']
+​
+result3 = count_rotations_linear(nums3)
+​
+result3, result3 == output3
+(0, True)
+5.A sorted list containing no elements( an empty list)
+
+# an empty list.
+​
+​
+​
+#test
+test4 = {'input':{'nums':[]},
+            'output': 0}
+​
+#testing our function by 
+#passing in case directly.
+nums4 = test4['input']['nums']
+output4 = test4['output']
+result4 = count_rotations_linear(nums4)
+result4, result4 == output4
+(0, True)
+6.A sorted list that was not rotated at all.
+
+#a sorted list that was not 
+#rotated at all.
+​
+​
+​
+#test
+test5 = {'input':{'nums': 
+                  [3,4,6,7,8,9]
+                 },
+            'output': 0}
+​
+#testing our function by 
+#passing in case directly.
+nums5 = test5['input']['nums']
+output5 = test5['output']
+result5 = count_rotations_linear(nums5)
+result5, result5 == output5
+(0, True)
+7.A list that was rotated n-1 times, where n is the number of elements.
+
+​
+#test
+test6 = {'input': 
+         {'nums': [2,3,4,5,6,1]},
+        'output': 5}
+​
+#pass in the cases directly to
+# test function.
+​
+nums6 = test6['input']['nums']
+output6 = test6['output']
+​
+result6 = count_rotations_linear(nums6)
+​
+result6, result6 == output6
+(5, True)
+8.A list that was rotated once.
+
+#a list that was rotated once.
+​
+​
+​
+​
+#test
+test7 = {'input':{'nums': 
+                  [7,1,2,3,4,5,
+                   6]},
+            'output': 1}
+​
+#testing our function by 
+#passing in case directly.
+nums7 = test7['input']['nums']
+output7 = test7['output']
+​
+result7 = count_rotations_linear(nums7)
+​
+result7, result7 == output7
+​
+(1, True)
+tests = [test0, test1, test2,
+        test3, test4, test5,
+        test6, test7]
+tests
+[{'input': {'nums': [15, 17, 19, 5, 7, 8, 10, 11, 12, 14]}, 'output': 3},
+ {'input': {'nums': [4, 5, 6, 7, 8, 1, 2, 3]}, 'output': 5},
+ {'input': {'nums': [2, 4, 6, 8]}, 'output': 0},
+ {'input': {'nums': [3]}, 'output': 0},
+ {'input': {'nums': []}, 'output': 0},
+ {'input': {'nums': [3, 4, 6, 7, 8, 9]}, 'output': 0},
+ {'input': {'nums': [2, 3, 4, 5, 6, 1]}, 'output': 5},
+ {'input': {'nums': [7, 1, 2, 3, 4, 5, 6]}, 'output': 1}]
+Test Evaluation Function
+
+def evaluate_test_cases(
+count_rotations_linear, tests):
+    case_number = 0
+    passed = 0
+    failed = 0
+    for test in tests:
+        print("#CASE", 
+              case_number, "\n\n")
+        print("Input:\n",
+              "nums:",
+              test['input']['nums'],
+             "\n\n")
+        print("Expected output: ",
+              test['output'], "\n\n")
+        
+        #passing in the cases.
+        nums = test['input']['nums']
+        output = test['output']
+        result = count_rotations_linear(nums) 
+        #^^ ACTUAL OUTPUT ^^
+        
+        print("Actual output: ",
+              result, "\n\n")
+        #condition for case validation.
+        if result == output:
+            print("result:PASSED", "\n\n\n")
+            passed += 1
+        else:
+            print("result:FAILED", "\n\n\n")
+            failed += 1
+            
+         
+        if case_number == (len(tests)-1):
+            print("#SUMMARY\n")
+            print("TEST CASES:", case_number + 1,
+                  "\n"
+                  "PASSED:", passed,
+                  "\n"
+                  "FAILED:", failed)
+        
+        #increment case_number.
+        case_number += 1
+        
+        
+4.Implement solution and test using example inputs, fix bug if any.
+evaluate_test_cases(count_rotations_linear, tests)
+​
+#CASE 0 
+
+
+Input:
+ nums: [15, 17, 19, 5, 7, 8, 10, 11, 12, 14] 
+
+
+Expected output:  3 
+
+
+Actual output:  3 
+
+
+result:PASSED 
+
+
+
+#CASE 1 
+
+
+Input:
+ nums: [4, 5, 6, 7, 8, 1, 2, 3] 
+
+
+Expected output:  5 
+
+
+Actual output:  5 
+
+
+result:PASSED 
+
+
+
+#CASE 2 
+
+
+Input:
+ nums: [2, 4, 6, 8] 
+
+
+Expected output:  0 
+
+
+Actual output:  0 
+
+
+result:PASSED 
+
+
+
+#CASE 3 
+
+
+Input:
+ nums: [3] 
+
+
+Expected output:  0 
+
+
+Actual output:  0 
+
+
+result:PASSED 
+
+
+
+#CASE 4 
+
+
+Input:
+ nums: [] 
+
+
+Expected output:  0 
+
+
+Actual output:  0 
+
+
+result:PASSED 
+
+
+
+#CASE 5 
+
+
+Input:
+ nums: [3, 4, 6, 7, 8, 9] 
+
+
+Expected output:  0 
+
+
+Actual output:  0 
+
+
+result:PASSED 
+
+
+
+#CASE 6 
+
+
+Input:
+ nums: [2, 3, 4, 5, 6, 1] 
+
+
+Expected output:  5 
+
+
+Actual output:  5 
+
+
+result:PASSED 
+
+
+
+#CASE 7 
+
+
+Input:
+ nums: [7, 1, 2, 3, 4, 5, 6] 
+
+
+Expected output:  1 
+
+
+Actual output:  1 
+
+
+result:PASSED 
+
+
+
+#SUMMARY
+
+TEST CASES: 8 
+PASSED: 8 
+FAILED: 0
+5.Analyse linear search complexity (using big O notation)
+what is the worst case complexity (running-time) of the algorithm expressed in Big O Notation? where N is the number of iterations.
+
+linear_search_complexity = "O(N)"
+6. Apply the right technique to overcome the inefficiencies and retake steps 3 to 6.
